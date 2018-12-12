@@ -461,12 +461,14 @@ class Rheostat extends React.Component {
 
     this.setStartSlide(ev, ev.clientX, ev.clientY);
 
-    if (typeof document.addEventListener === 'function') {
-      document.addEventListener('mousemove', this.handleMouseSlide, false);
-      document.addEventListener('mouseup', this.endSlide, false);
+    const doc = this.handleContainerNode.ownerDocument;
+
+    if (typeof doc.addEventListener === 'function') {
+      doc.addEventListener('mousemove', this.handleMouseSlide, false);
+      doc.addEventListener('mouseup', this.endSlide, false);
     } else {
-      document.attachEvent('onmousemove', this.handleMouseSlide);
-      document.attachEvent('onmouseup', this.endSlide);
+      doc.attachEvent('onmousemove', this.handleMouseSlide);
+      doc.attachEvent('onmouseup', this.endSlide);
     }
 
     if (onSliderDragStart) onSliderDragStart();
@@ -483,8 +485,10 @@ class Rheostat extends React.Component {
 
     this.setStartSlide(ev, touch.clientX, touch.clientY);
 
-    document.addEventListener('touchmove', this.handleTouchSlide, false);
-    document.addEventListener('touchend', this.endSlide, false);
+    const doc = this.handleContainerNode.ownerDocument;
+
+    doc.addEventListener('touchmove', this.handleTouchSlide, false);
+    doc.addEventListener('touchend', this.endSlide, false);
 
     if (onSliderDragStart) onSliderDragStart();
 
@@ -549,14 +553,16 @@ class Rheostat extends React.Component {
 
     this.setState({ slidingIndex: null });
 
-    if (typeof document.removeEventListener === 'function') {
-      document.removeEventListener('mouseup', this.endSlide, false);
-      document.removeEventListener('touchend', this.endSlide, false);
-      document.removeEventListener('touchmove', this.handleTouchSlide, false);
-      document.removeEventListener('mousemove', this.handleMouseSlide, false);
+    const doc = this.handleContainerNode.ownerDocument;
+
+    if (typeof doc.removeEventListener === 'function') {
+      doc.removeEventListener('mouseup', this.endSlide, false);
+      doc.removeEventListener('touchend', this.endSlide, false);
+      doc.removeEventListener('touchmove', this.handleTouchSlide, false);
+      doc.removeEventListener('mousemove', this.handleMouseSlide, false);
     } else {
-      document.detachEvent('onmousemove', this.handleMouseSlide);
-      document.detachEvent('onmouseup', this.endSlide);
+      doc.detachEvent('onmousemove', this.handleMouseSlide);
+      doc.detachEvent('onmouseup', this.endSlide);
     }
 
     if (onSliderDragEnd) onSliderDragEnd();

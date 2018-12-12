@@ -1,7 +1,7 @@
 {
-  "name": "rheostat",
-  "version": "3.0.2",
-  "description": "Rheostat is a www, mobile, and accessible slider component built with React",
+  "name": "rheostat-in-frame",
+  "version": "0.1.0",
+  "description": "Rheostat-in-frame is a www, mobile, and accessible slider component built with React, forked from airbnb/rheostat v3.0.2",
   "main": "lib/Slider",
   "jsnext:main": "src/Slider.jsx",
   "scripts": {
@@ -11,7 +11,7 @@
     "prebuild:css": "rimraf lib/css && mkdir -p lib/css",
     "build:css": "node scripts/buildCSS.js",
     "clean": "rimraf lib",
-    "prepublish": "in-publish && safe-publish-latest && npm run build || not-in-publish",
+    "prepublishOnly": "in-publish && safe-publish-latest && npm run build || not-in-publish",
     "lint": "eslint --ext .js,.jsx src test stories",
     "storybook": "start-storybook -p 9001",
     "storybook:css": "npm run build:css && start-storybook -p 6006 -c .storybook-css",
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "git@github.com:airbnb/rheostat.git"
   },
-  "author": "Josh Perez <josh.perez@airbnb.com>",
+  "author": "Lanec Wolters <lwolters@onlinerepublic.com>",
   "license": "MIT",
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
